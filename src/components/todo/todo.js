@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
 import Header from './header.js';
+import Form from './form.js';
 
 import { v4 as uuid } from 'uuid';
 
@@ -48,7 +49,9 @@ const ToDo = () => {
         <h1>To Do List: {incomplete} items pending</h1>
       </header> */}
 
-      <form onSubmit={handleSubmit}>
+      <Form handleChange={handleChange} handleSubmit={handleSubmit} />
+
+      {/* <form onSubmit={handleSubmit}>
 
         <h2>Add To Do Item</h2>
 
@@ -70,7 +73,7 @@ const ToDo = () => {
         <label>
           <button type="submit">Add Item</button>
         </label>
-      </form>
+      </form> */}
 
       {list.map(item => (
         <div key={item.id}>
