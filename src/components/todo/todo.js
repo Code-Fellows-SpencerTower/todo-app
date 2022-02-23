@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useForm from '../../hooks/form.js';
 import Header from './header.js';
 import Form from './form.js';
+import List from './list.js';
 
 import { v4 as uuid } from 'uuid';
 
@@ -75,7 +76,9 @@ const ToDo = () => {
         </label>
       </form> */}
 
-      {list.map(item => (
+      <List list={list} toggleComplete={toggleComplete} />
+
+      {/* {list.map(item => (
         <div key={item.id}>
           <p>{item.text}</p>
           <p><small>Assigned to: {item.assignee}</small></p>
@@ -83,7 +86,7 @@ const ToDo = () => {
           <div onClick={() => toggleComplete(item.id)}>Complete: {item.complete.toString()}</div>
           <hr />
         </div>
-      ))}
+      ))} */}
 
     </>
 
