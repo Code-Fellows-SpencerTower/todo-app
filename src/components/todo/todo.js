@@ -3,20 +3,26 @@ import useForm from '../../hooks/form.js';
 import Header from '../Header/header.js';
 import Form from '../Form/form.js';
 import List from '../List/list.js';
+import ItemsPerPage from '../ItemsPerPage/ItemsPerPage';
 
 import { v4 as uuid } from 'uuid';
 
 const ToDo = () => {
 
+  // list is state, starts as empty array
   const [list, setList] = useState([]);
+  // incomplete is state, starts as empty array
   const [incomplete, setIncomplete] = useState([]);
+  // useForm - custom hook for managing forms
   const { handleChange, handleSubmit } = useForm(addItem);
 
   function addItem(item) {
+    console.log('LIST', list);
     console.log(item);
     item.id = uuid();
     item.complete = false;
     setList([...list, item]);
+    console.log('LIST AFTER SETLIST', list);
   }
 
   function deleteItem(id) {
@@ -32,9 +38,7 @@ const ToDo = () => {
       }
       return item;
     });
-
     setList(items);
-
   }
 
   useEffect(() => {
@@ -43,13 +47,12 @@ const ToDo = () => {
     document.title = `To Do List: ${incomplete}`;
   }, [list]);
 
+
   return (
     <>
-
       <Header incomplete={incomplete} />
-
       <Form handleChange={handleChange} handleSubmit={handleSubmit} />
-
+      <ItemsPerPage />
       <List list={list} toggleComplete={toggleComplete} />
     </>
   );
