@@ -1,14 +1,14 @@
 import React from 'react';
+import './app.scss';
 
 import ToDo from './components/todo/todo.js';
-import { ThemeProvider } from 'react-bootstrap';
+import SettingsProvider from './components/context/settingsContext.js';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <ThemeProvider>
-        <ToDo />
-      </ThemeProvider>
-    );
-  }
+export default function App() {
+  return (
+    <SettingsProvider>
+      <ToDo />
+    </SettingsProvider>
+  );
 }
+

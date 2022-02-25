@@ -1,34 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Switch, Card, Elevation, Button } from '@blueprintjs/core';
+import { SettingsContext } from "../context/settingsContext";
 
 
 function Form(props) {
+  let settings = useContext(SettingsContext);
+  console.log('CURRENT', settings.showCompletedTodos);
+  function handleShowCompleted() {
+    settings.showCompletedTodos ? settings.setShowCompletedTodos(false) : settings.setShowCompletedTodos(true);
+  }
+  
 
   return (
-    <form onSubmit={props.handleSubmit}>
+    <>
+      <form onSubmit={props.handleSubmit}>
+        <h2>Add To Do Item</h2>
+        <label>
+          <span>To Do Item</span>
+          <input onChange={props.handleChange} name="text" type="text" placeholder="Item Details" />
+        </label>
 
-      <h2>Add To Do Item</h2>
+        <label>
+          <span>Assigned To</span>
+          <input onChange={props.handleChange} name="assignee" type="text" placeholder="Assignee Name" />
+        </label>
 
-      <label>
-        <span>To Do Item</span>
-        <input onChange={props.handleChange} name="text" type="text" placeholder="Item Details" />
-      </label>
+        <label>
+          <span>Difficulty</span>
+          <input onChange={props.handleChange} defaultValue={3} type="range" min={1} max={5} name="difficulty" />
+        </label>
 
-      <label>
-        <span>Assigned To</span>
-        <input onChange={props.handleChange} name="assignee" type="text" placeholder="Assignee Name" />
-      </label>
-
-      <label>
-        <span>Difficulty</span>
-        <input onChange={props.handleChange} defaultValue={3} type="range" min={1} max={5} name="difficulty" />
-      </label>
-
-      <label>
-        <button type="submit">Add Item</button>
-      </label>
-    </form>
+        <label>
+          <button type="submit">Add Item</button>
+        </label>
+        <Switch
+          checked={settings.showCompletedTodos}
+          label="Show Completed"
+          onChange={handleShowCompleted}
+        />
+      </form >
+    </>
   )
-
 }
 
 

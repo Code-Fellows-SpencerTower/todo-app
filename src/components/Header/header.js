@@ -1,23 +1,23 @@
 import React from "react";
 import { useContext } from 'react';
-import { ThemeContext } from "../context/themeContext";
+import { Navbar, Alignment } from '@blueprintjs/core';
 
 function Header(props) {
 
   // let theme = useContext(ThemeContext);
 
   return (
+    // <Navbar>
+    //   <Navbar.Group align={Alignment.LEFT}>
+    //     <Navbar.Heading>
+    //       To Do List: {props.incomplete} items pending
+    //     </Navbar.Heading>
+    //   </Navbar.Group>
+    // </Navbar>
     <div>
       <h1>
         To Do List: {props.incomplete} items pending
       </h1>
-      <ThemeContext.Consumer>
-        {(theme) => (
-          <>
-            <p>{theme}</p>
-          </>
-        )}
-      </ThemeContext.Consumer>
     </div >
   )
 }
