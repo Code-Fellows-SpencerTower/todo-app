@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { SettingsContext } from "../context/settingsContext";
 import { Button } from '@blueprintjs/core';
 
-
+// renders a field that updates todosPerPage state via context
 function ItemsPerPage() {
 
   let settings = useContext(SettingsContext);
