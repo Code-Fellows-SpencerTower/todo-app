@@ -15,12 +15,15 @@ function SettingsProvider(props) {
 
   const [todosPerPage, setTodosPerPage] = useState(3);
   const [showCompletedTodos, setShowCompletedTodos] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const state = {
     todosPerPage,
     setTodosPerPage,
     showCompletedTodos,
     setShowCompletedTodos,
+    currentPage,
+    setCurrentPage,
   }
 
   return (
